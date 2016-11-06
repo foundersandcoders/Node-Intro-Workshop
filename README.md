@@ -69,9 +69,9 @@ Anyone can create a new node module that adds some functionality and publish it 
 
 npm comes with its own command-line interface you can use in your terminal. Its main commands are:
 
-`npm init`: Initialise a package and create a `package.json` with the definition of that package.
-`npm search MODULE_NAME`: Search a module in the npm registry.
-`npm install MODULE_NAME`: Install MODULE\_NAME locally.
-`npm install -g MODULE_NAME`: install MODULE\_NAME globally.
-`npm install --save MODULE_NAME`: install MODULE\_NAME locally and add it as a dependency in the package.json.
-`npm install --save-dev MODULE_NAME`: install MODULE\_NAME locally and add it as a development dependency in the package.json.
+* `npm init`: Initialise a package and create a `package.json` with the definition of that package.
+* `npm search MODULE_NAME`: Search a module in the npm registry.
+* `npm install MODULE_NAME`: Install MODULE\_NAME locally.
+* `npm install -g MODULE_NAME`: install MODULE\_NAME globally.
+* `npm install --save MODULE_NAME`: install MODULE\_NAME locally and add it as a dependency in the package.json.
+* `npm install --save-dev MODULE_NAME`: install MODULE\_NAME locally and add it as a development dependency in the package.json.
