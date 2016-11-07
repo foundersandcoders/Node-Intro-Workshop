@@ -1,6 +1,29 @@
 # Node-Intro-Workshop
 
-### What is Node?
+### introduction
+
+By the end of this workshop you'll be able to answer the following questions:
+
+* What is Node? Why do you need it?
+* What is a server?
+* What is npm? How do you use it?
+* What are node modules?
+* What is a package.json?
+* What are 'module exports' and 'require'?
+* What is a module?
+
+We'll be doing the following things:
+
+* Installing Node
+* Initialising a project's package.json
+* Creating a basic http server
+* Creating a router for your server
+* Learning how to use the 'fs' core module to read and write from the file system
+* Learning how to communicate with your http server from the front-end
+* Setting up 'nodemon' for your development environment
+* Learning about how to modularise your server code
+
+### what is node?
 
 node.js is:
 
@@ -17,7 +40,7 @@ It doesn't have:
 
 because it's not run in the browser, and doesn't have access to browser APIs!
 
-### REPL
+### repl
 
 To demonstrate that node allows you to now use javascript on your computer you can try experimenting
 with node's REPL.
@@ -26,9 +49,9 @@ If you type `node` into your command-line you will see a `>` prompt. You can now
 into your command-line to experiment with javascript code. Press ctrl + c to exit the REPL mode.
 
 The command-line command `node path_to_program.js` also allows you to execute javascript programs you've
-written and will print what the program returns to the console. I recommend using this to test your code to get more comfortable with your command-line.
+written (that don't use browser features) and will print what the program returns to the console. I recommend using this to test your code to get more comfortable with your command-line.
 
-### What is a server?
+### what is a server?
 
 What is a server? What's a front-end and back-end?
 
@@ -46,7 +69,7 @@ In a typical web app a server could perform some of these functions:
 
 Client-side javascript runs in the visitor's browser, whereas server-side code runs on a website's web server.
 
-### How node works
+### how node works
 
 Node handles I/O with: callbacks, events, streams and modules.
 
@@ -54,10 +77,10 @@ If you learn how these four things work then you will be able to go into any mod
 
 This article presents a great summary of these topics and node as a whole: [the art of node](https://github.com/maxogden/art-of-node).
 
-### Modules
+### modules
 
-Modules are just small programs you can integrate with the bigger program you are writing.
-They package programs so that they can be exported to be imported into and used by other programs.
+Modules are just small programs you can integrate with the other programs you are writing.
+They package programs so that they can be exported to be used by other programs.
 Node's core library is made up of modules you can import into your programs as needed to make use
 of their functionality.
 
@@ -110,8 +133,8 @@ when you commit to github. When you deploy your project on a server, it will use
 
 note: use global module installations sparingly and only for development purposes. Unless you install them locally to the project, they won't appear in your `package.json` and so won't be installed on the server when you deploy the project.
 
-### http
+### http server
 
 We now have everything we need to start writing node code in this repo and create our first http server!
 
-(code along)
+The next part of this tutorial will be done as a code along.
