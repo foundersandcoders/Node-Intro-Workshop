@@ -126,7 +126,7 @@ The `package.json` created by `npm init` contains meta-information about your pr
 
 ### installing modules
 
-If you use `npm install MODULE_NAME` now it will install the named module into your project. You will now be able to find it in the `node_modules` folder and it will be listed under the dependencies in your `package.json`.
+If you use `npm install MODULE_NAME --save` now it will install the named module into your project. You will now be able to find it in the `node_modules` folder and it will be listed under the dependencies in your `package.json`.
 
 Be sure to add `node_modules` to your list of files to ignore on .gitignore or it will be pushed up
 when you commit to github. When you deploy your project on a server, it will use the `package.json` in order to install its own node virtual environment and `node_modules` folder, so no need to worry!
