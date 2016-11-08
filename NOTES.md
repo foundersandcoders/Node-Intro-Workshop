@@ -3,8 +3,7 @@
 This workshop was prepared to run the first day of node week in the Founders & Coders
 javascript bootcamp.
 
-I wanted to write up some post-delivery notes aimed at anyone who wanted to review this
-when preparing to teach this same week in the curriculum.
+I wanted to write up some post-delivery notes to review when preparing to teach again.
 
 The general format for the day was as follows:
 
