@@ -1,7 +1,7 @@
 {
   "name": "node-workshop",
   "version": "1.0.0",
-  "description": "### introduction",
+  "description": "Node Week Day 1 Morning Workshop",
   "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,8 +17,5 @@
   "bugs": {
     "url": "https://github.com/bradreeder/Node-Intro-Workshop/issues"
   },
-  "homepage": "https://github.com/bradreeder/Node-Intro-Workshop#readme",
-  "dependencies": {
-    "underscore": "^1.8.3"
-  }
+  "homepage": "https://github.com/bradreeder/Node-Intro-Workshop#readme"
 }
