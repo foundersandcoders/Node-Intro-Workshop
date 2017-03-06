@@ -5,7 +5,7 @@ module.exports = function(request, response) {
   if (url === '/') {
     handlers.serveLanding(request, response);
   } else if (url.indexOf('public') !== -1) {
-    handlers.servePublic(request, response, url);
+    handlers.servePublic(request, response);
   } else {
     handlers.pageNotFound(request, response);
   }
