@@ -11,11 +11,17 @@ handlers.serveLanding = function(request, response) {
   });
 }
 
-handlers.servePublic = function(request, response, url, extension) {
-  fs.readFile(path.join(__dirname, '../..',  url), function(err, file) {
+handlers.servePublic = function(request, response) {
+  fs.readFile(path.join(__dirname, '../..',  request.url), function(err, file) {
     if (err) throw err;
-    var extension = url.split('.')[1];
-    response.writeHead(200, { "content-type": "text/" + extension });
+    var extension = request.url.split('.')[1];
+    var extensionType = {
+      "html": "text/html",
+      "css": "text/css",
+      "js": "application/javascript",
+      "ico": "image/x-icon"
+    }
+    response.writeHead(200, { "content-type": extensionType[extension] });
     response.end(file);
   });
 }
