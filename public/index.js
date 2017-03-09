@@ -5,7 +5,7 @@
   const yellowBtn = document.getElementById('yellow-button');
   const body = document.querySelector('body');
 
-  var httpGetRequest = (colour) => {
+  const httpGetRequest = (colour) => {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
       if (xhr.readyState == 4 && xhr.status == 200) {
