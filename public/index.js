@@ -1,12 +1,12 @@
 (function() {
 
-  const redBtn = document.getElementById('red-button');
-  const blueBtn = document.getElementById('blue-button');
-  const yellowBtn = document.getElementById('yellow-button');
-  const body = document.querySelector('body');
+  var redBtn = document.getElementById('red-button');
+  var blueBtn = document.getElementById('blue-button');
+  var yellowBtn = document.getElementById('yellow-button');
+  var body = document.querySelector('body');
 
-  const httpGetRequest = (colour) => {
-    const xhr = new XMLHttpRequest();
+  function httpGetRequest(colour) {
+    var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
       if (xhr.readyState == 4 && xhr.status == 200) {
         body.style.backgroundColor = colour;
@@ -16,13 +16,13 @@
     xhr.send();
   };
 
-  redBtn.addEventListener('click', () => {
+  redBtn.addEventListener('click', function() {
     httpGetRequest('red');
   });
-  blueBtn.addEventListener('click', () => {
+  blueBtn.addEventListener('click', function() {
     httpGetRequest('blue');
   });
-  yellowBtn.addEventListener('click', () => {
+  yellowBtn.addEventListener('click', function () {
     httpGetRequest('yellow');
   });
 
