@@ -1,0 +1,19 @@
+{
+  "name": "node-intro-workshop",
+  "version": "1.0.0",
+  "description": "An introductory workshop to Node for the F&C course",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradreeder/Node-Intro-Workshop.git"
+  },
+  "author": "marisid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bradreeder/Node-Intro-Workshop/issues"
+  },
+  "homepage": "https://github.com/bradreeder/Node-Intro-Workshop#readme"
+}
