@@ -1,3 +1,6 @@
+**Author**: [@bradreeder](https://github.com/bradreeder)  
+**Maintainer**: TBC  
+
 # Node-Intro-Workshop
 
 ### Introduction
