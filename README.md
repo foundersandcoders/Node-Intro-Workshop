@@ -1,5 +1,9 @@
 # Node-Intro-Workshop
 
+**Author**: [@bradreeder](https://github.com/bradreeder)  
+
+**Maintainer**: TBC  
+
 ### Introduction
 
 By the end of this workshop you'll be able to answer the following questions:
