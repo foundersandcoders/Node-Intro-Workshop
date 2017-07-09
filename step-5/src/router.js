@@ -3,7 +3,7 @@ const handlers = require('./handlers.js');
 const router = (request, response) => {
   const url = request.url;
   if (url === '/') {
-    handlers.handleHomeRoute(request, response, url);
+    handlers.handleHomeRoute(request, response);
   } else if (url.indexOf('public') !== -1) {
     handlers.handlePublic(request, response, url);
   } else {

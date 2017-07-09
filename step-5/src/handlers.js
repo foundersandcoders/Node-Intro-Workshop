@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const handleHomeRoute = (request, response, url) => {
+const handleHomeRoute = (request, response) => {
   const filePath = path.join(__dirname, '..', 'public', 'index.html');
   fs.readFile(filePath, (error, file) => {
     if (error) {
