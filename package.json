@@ -19,8 +19,6 @@
   },
   "homepage": "https://github.com/bradreeder/Node-Intro-Workshop#readme",
   "dependencies": {
-    "babel": "^6.23.0",
-    "babel-cli": "^6.24.1"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
