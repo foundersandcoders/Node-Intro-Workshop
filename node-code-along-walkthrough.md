@@ -17,7 +17,7 @@
   * ```const http = require('http');```
   * using this syntax and 'requiring' in a module makes that module available in the file you are writing.
   * (you have to _tell_ node which core modules you're going to use so you don't load in unecessary ones)
-4. now we need to specify a host and a port, on a local server the host is allocated automatically (to localhost). we also need to set up a port to make sure our server only "listens" to things coming through that port. 
+4. now we need to specify a host and a port, on a local server the host is allocated automatically (to localhost). we also need to set up a port to make sure our server only "listens" to things coming through that port.
 5. create the server
   * ```const server = http.createServer(router)```
   * the http.createServer method takes a single argument of a function. That function takes two arguments. ```request``` and ```response```.
@@ -59,7 +59,7 @@
 2. restart the server, navigate to both pages and show that different things are being shown in the browser.
 3. Then show if you try to navigate to a path that we haven't defined that the page just keeps loading
   * This is because the client has opened a connection to the server and is waiting for a response, since our router function does not send anything back, or end the connection, the client is just left 'hanging', until the browser gets bored of waiting and closes the connection
-4. Introduce adding an 'else' to the conditional chain, so that if we do not have an option we always response with something. 
+4. Introduce adding an 'else' to the conditional chain, so that if we do not have an option we always response with something.
   ```
   else {
     response.writeHead(404);
@@ -68,8 +68,8 @@
   ```
   * introduce writehead and that the first argument is the code for the http request (students should be familiar with these from API week)
   * add writeHead to the prev 2 branches
-  
-## Step 1.75 
+
+## Step 1.75
 5. Now this function is getting a bit big, so it's a good time to make our code a bit more modular
  * create a file in src called router.js, copy and paste the router function to this new file and delete it from server.js
  * put ```module.exports = router``` at the bottom of the file
@@ -126,9 +126,9 @@ const filePath = path.join(__dirname, '..', 'public', 'index.html');
   * add another else if branch
   * check if the url is ```/public/main.css```
   * branch will look like this:
-  
+
   ```
-  
+
   else if (url === '/public/main.css') {
     const filePath = path.join(__dirname, '..', url);
     fs.readFile(filePath, (error, file) => {
@@ -142,7 +142,7 @@ const filePath = path.join(__dirname, '..', 'public', 'index.html');
       }
     });
   }
-  
+
   ```
 2. We also need to serve our JS
   * again, much the same way:
@@ -178,8 +178,8 @@ const filePath = path.join(__dirname, '..', 'public', 'index.html');
   }
   ```
 ## Step 4
-1. We now are serving all of the files needed for our site! awesome! 
-2. But our code is quite repetetive, and we want to make it DRY! 
+1. We now are serving all of the files needed for our site! awesome!
+2. But our code is quite repetetive, and we want to make it DRY!
 3. Remove all of the else if branches (for serving css, js and ico)
 4. add an else if branch where the conditional is ```if (url.indexOf('/public/') !== -1)```
   * This checks if the url has public in it, so this route can potentially serve anything from our public directory.
@@ -217,3 +217,82 @@ const extensionType = {
 * We can finish off by just modularising out the handlers a little bit
 * It's good when the router just contains the logic of which route goes where, and what _happens_ in those routes is contained in a handlers file
 * in SRC create a ```handlers.js``` file
+* in `handlers.js` create a function called `handleHomeRoute` which takes two arguments, `request` and `response`
+* Now copy everything inside of the first if statement branch in `router.js` in the function you just made in `handlers.js`
+* you should now have something which looks like this:
+```js
+const handleHomeRoute = (request, response) => {
+  const filePath = path.join(__dirname, '..', 'public', 'index.html');
+  fs.readFile(filePath, (error, file) => {
+    if (error) {
+      console.log(error);
+      response.writeHead(500, 'Content-Type: text/html');
+      response.end("<h1>Sorry, we've had a problem on our end</h1>");
+    } else {
+      response.writeHead(200, 'Content-Type: text/html');
+      response.end(file);
+    }
+  });
+};
+```
+* now we want to do the same with the second `else if` branch
+* go into `handlers.js` and create a function called `handlePublic` it should take 3 arguments - `request`, `response` and `url`
+* now copy the body of the `else if` statement in `router.js` (the one with `url.indexOf('public') !== -1` as the condition) and paste it into the body of your `handlePublic` function in `handlers.js`
+* you should now have something that looks like this:
+```js
+const handlePublic = (request, response, url) => {
+  const extension = url.split('.')[1];
+  const extensionType = {
+    html: 'text/html',
+    css: 'text/css',
+    js: 'application/javascript',
+    ico: 'image/x-icon',
+  };
+  const filePath = path.join(__dirname, '..', url);
+  fs.readFile(filePath, (error, file) => {
+    if (error) {
+      console.log(err);
+      response.writeHead(404, 'Content-Type: text/html');
+      response.end('<h1>404 file not found</h1>');
+    } else {
+      response.writeHead(200, `Content-Type: ${extensionType[extension]}`);
+      response.end(file);
+    }
+  });
+  console.log(url);
+};
+```
+* now, in our `handlers.js` file we are using path and fs so we need to require those in at the top
+* we're going to need to export these functions so that we can use them in `router.js` so add this to the bottom of the file:
+```js
+module.exports = {
+  handleHomeRoute,
+  handlePublic,
+};
+```
+Explain that in ES6 if you want the value of a key in an object to be the same as the key you can just put the name of the key with a comma (as opposed to `handleHomeRoute: handleHomeRoute` etc).
+
+* now in `router.js` we can remove the require statements bringing in `fs` and `path` as we no longer use them in this file
+  * when using modules you have to require them into only into files that actually use things from that module
+* but we will need our handlers file so let's bring that in.
+* `const handlers = require('./handlers.js')`
+* now we can replace the content of the if branches with the functions we just made
+* so our `router.js` file ends up looking like this:
+```js
+const handlers = require('./handlers.js');
+
+const router = (request, response) => {
+  const url = request.url;
+  if (url === '/') {
+    handlers.handleHomeRoute(request, response);
+  } else if (url.indexOf('public') !== -1) {
+    handlers.handlePublic(request, response, url);
+  } else {
+    response.writeHead(404, 'Content-Type: text/html');
+    response.end('<h1>404 file not found</h1>');
+  }
+};
+
+module.exports = router;
+```
+* we don't modularise the 404 functionality as it is only two lines, to add it to our handlers file we would be adding more lines of code, without making anything clearer. The 404-ness of a route also kind of falls into the concerns of the router that we defined as well, declaring that a file is not found/does not exist can be seen to be part of the router's job.
