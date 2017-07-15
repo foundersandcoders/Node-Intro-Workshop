@@ -16,9 +16,14 @@ module.exports = function(request, response) {
       ico: 'image/x-icon',
     };
     fs.readFile(path.join(__dirname, '..', '..', url), function(err, file) {
-      if (err) throw err;
-      response.writeHead(200, `Content-Type: ${extensionType[extension]}`);
-      response.end(file);
+      if (err) {
+        console.log(err);
+        response.writeHead(500, 'Content-Type: text/html');
+        response.end("<h1>Sorry, we've had a problem on our end</h1>");
+      } else {
+        response.writeHead(200, `Content-Type: ${extensionType[extension]}`);
+        response.end(file);
+      }
     });
     console.log(url);
   } else {

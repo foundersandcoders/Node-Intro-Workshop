@@ -8,7 +8,9 @@ handlers.serveLanding = function(request, response) {
     path.join(__dirname, '..', '..', 'public', 'index.html'),
     function(err, file) {
       if (err) {
-        throw err;
+        console.log(err);
+        response.writeHead(500, 'Content-Type: text/html');
+        response.end("<h1>Sorry, we've had a problem on our end</h1>");
       }
       response.writeHead(200, 'Content-Type: text/html');
       response.end(file);
