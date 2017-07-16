@@ -1,0 +1,26 @@
+{
+  "name": "node-intro-workshop",
+  "version": "1.0.0",
+  "description": "day 1 workshop for node wek 1",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
+    "devStart": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradreeder/Node-Intro-Workshop.git"
+  },
+  "author": "ZooeyMiller",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bradreeder/Node-Intro-Workshop/issues"
+  },
+  "homepage": "https://github.com/bradreeder/Node-Intro-Workshop#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
