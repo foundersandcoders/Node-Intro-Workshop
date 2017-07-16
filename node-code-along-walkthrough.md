@@ -24,21 +24,20 @@
   * request is an object with information about the request that has been sent to you
   * response is an object with methods on it which allow you to send things back to the user.
 6. define the router function
-  * define an arrow function named router above where you have created the server
-  * Explain that functions declared with const are not hoisted and so need to be defined before they are used
-  * ```
-  const router = (request, response) => {
-  response.end('hello world')
-  }
-  ```
-  * explain that the end method on the response object is a way to close the connection that has been opened between you and the user, sending the user the string that you have passed to the end method.
-
+  *  define an arrow function named router above where you have created the server
+  *  explain that functions declared with const are not hoisted and so need to be defined before they are used 
+  
+         ```const router = (request, response) => {
+         response.end('hello world')
+         }```
+         
+  *  explain that the end method on the response object is a way to close the connection that has been opened between you and the user, sending the user the string that you have passed to the end method.
 7. start the server
   * ```server.listen(port)```
   * write the log to let the user know the server is now running
   * ```console.log(`server up and running on localhost:${port}`)```
 8. run the server by running ```node src/server.js```
-  * navigate to localhost:4000 in your browser
+  * navigate to `localhost:4000` in your browser
   * show that the plaintext we typed in is now coming up in our browser
   * show that no matter what path you give to localhost:4000 (eg. localhost:4000/yolo) you still get the same response
   * this is because currently in our router function we don't look at the request, we just send the same response no matter what
