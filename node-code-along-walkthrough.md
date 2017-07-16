@@ -27,11 +27,11 @@
   *  define an arrow function named router above where you have created the server
   *  explain that functions declared with const are not hoisted and so need to be defined before they are used 
   
-         ```const router = (request, response) => {
+         const router = (request, response) => {
          response.end('hello world')
-         }```
-         
-  *  explain that the end method on the response object is a way to close the connection that has been opened between you and the user, sending the user the string that you have passed to the end method.
+         }      
+  *  explain that the end method on the response object is a way to close the connection that has been opened between you and the user, sending the user the string that you have passed to the end method.
+  
 7. start the server
   * ```server.listen(port)```
   * write the log to let the user know the server is now running
@@ -39,7 +39,7 @@
 8. run the server by running ```node src/server.js```
   * navigate to `localhost:4000` in your browser
   * show that the plaintext we typed in is now coming up in our browser
-  * show that no matter what path you give to localhost:4000 (eg. localhost:4000/yolo) you still get the same response
+  * show that no matter what path you give to `localhost:4000` (eg. `localhost:4000/yolo`) you still get the same response
   * this is because currently in our router function we don't look at the request, we just send the same response no matter what
 9. Now is a good time to make sure everyone is at the same point and everything is working
 
@@ -48,13 +48,13 @@
  * this will be a string with whatever is in the url bar in the browser (apart from ```localhost:4000```)
  * so we check what it is, for the home route it will be '/'
  * so add
-  ```
-    if (url === '/') {
-    response.end('hello world');
-  } else if (url === '/yolo') {
-    response.end('this is yolo');
-  }
-  ```
+ 
+          if (url === '/') {
+          response.end('hello world');
+          } else if (url === '/yolo') {
+          response.end('this is yolo');
+          }
+          
 2. restart the server, navigate to both pages and show that different things are being shown in the browser.
 3. Then show if you try to navigate to a path that we haven't defined that the page just keeps loading
   * This is because the client has opened a connection to the server and is waiting for a response, since our router function does not send anything back, or end the connection, the client is just left 'hanging', until the browser gets bored of waiting and closes the connection
