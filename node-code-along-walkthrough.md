@@ -197,11 +197,12 @@ const extensionType = {
 
   * ```    const filePath = path.join(__dirname, '..', url);```
   
+  // Replaced err with error in line 205
 7. We then read the file and send it off to the client
   
         fs.readFile(filePath, (error, file) => {
           if (error) {
-          console.log(err);
+          console.log(error);
           response.writeHead(404, 'Content-Type: text/html');
           response.end('<h1>404 file not found</h1>');
           } else {
@@ -248,10 +249,12 @@ const handlePublic = (request, response, url) => {
     js: 'application/javascript',
     ico: 'image/x-icon',
   };
+  
+  // Replaced err with error in line 256
   const filePath = path.join(__dirname, '..', url);
   fs.readFile(filePath, (error, file) => {
     if (error) {
-      console.log(err);
+      console.log(error);
       response.writeHead(404, 'Content-Type: text/html');
       response.end('<h1>404 file not found</h1>');
     } else {
