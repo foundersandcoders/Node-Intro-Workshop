@@ -1,3 +1,5 @@
+N.B. this notes file was created by @bradreeder in Nov 2016. At the time of adding this comment (Nov 2018), the workshop is delivered as an intro to node (see the README) and then a code-along. The code-along walkthrough notes for the mentor are in `node-code-along-walkthrough.md` in this folder, and each `step-*` folder holds the correct code for the end of the corresponding step of the code-along.
+
 ### introduction
 
 This workshop was prepared to run the first day of node week in the Founders & Coders
