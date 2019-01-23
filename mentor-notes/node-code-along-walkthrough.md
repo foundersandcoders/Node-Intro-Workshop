@@ -86,7 +86,7 @@
 2. use `fs.readFileSync()` first to not use callbacks
 3. introduce the path module and use ```path.join(__dirname, '..', 'public', 'index.html')``` as the argument to `readFileSync`
 4. assign the result of readFileSync to a variable
-5. add ```response.writeHead(200, 'Content-Type: text/html)``` above the response.end()
+5. add ```response.writeHead(200, { 'Content-Type': 'text/html' })``` above the response.end()
 6. pass the variable with the contents of readFile to response.end()
 7. go look in the browser and see that there is actual html there now
 
@@ -98,20 +98,20 @@ const filePath = path.join(__dirname, '..', 'public', 'index.html');
       if (error) {
         console.log(error);
       } else {
-        response.writeHead(200, 'Content-Type: text/html');
+        response.writeHead(200, { 'Content-Type': 'text/html' });
         response.end(file);
       }
  ```
-2. update the 404 route to send with ```'Content-Type: text/html'``` and a h1 tag with '404: not found'
+2. update the 404 route to send with ```{ 'Content-Type': 'text/html' }``` and a h1 tag with '404: not found'
   * use this as a way to introduce good error handling, letting the user know what has happened by sending something through even if there's a problem
   * update ```error``` if branch to send a response back to user, with 500 for internal server error
    ```
    if (error) {
         console.log(error);
-        response.writeHead(500, 'Content-Type: text/html');
+        response.writeHead(500, { 'Content-Type': 'text/html' });
         response.end("<h1>Sorry, we've had a problem on our end</h1>");
       } else {
-        response.writeHead(200, 'Content-Type: text/html');
+        response.writeHead(200, { 'Content-Type': 'text/html' });
         response.end(file);
       }
    ```
@@ -133,10 +133,10 @@ const filePath = path.join(__dirname, '..', 'public', 'index.html');
     fs.readFile(filePath, (error, file) => {
       if (error) {
         console.log(error);
-        response.writeHead(500, 'Content-Type: text/html');
+        response.writeHead(500, { 'Content-Type': 'text/html' });
         response.end("<h1>Sorry, we've had a problem on our end</h1>");
       } else {
-        response.writeHead(200, 'Content-Type: text/css');
+        response.writeHead(200, { 'Content-Type': 'text/css' });
         response.end(file);
       }
     });
@@ -151,10 +151,10 @@ const filePath = path.join(__dirname, '..', 'public', 'index.html');
     fs.readFile(filePath, (error, file) => {
       if (error) {
         console.log(error);
-        response.writeHead(500, 'Content-Type: text/html');
+        response.writeHead(500, { 'Content-Type': 'text/html' });
         response.end("<h1>Sorry, we've had a problem on our end</h1>");
       } else {
-        response.writeHead(200, 'Content-Type: application/javascript');
+        response.writeHead(200, { 'Content-Type': 'application/javascript' });
         response.end(file);
       }
     });
@@ -167,10 +167,10 @@ const filePath = path.join(__dirname, '..', 'public', 'index.html');
     fs.readFile(filePath, (error, file) => {
       if (error) {
         console.log(error);
-        response.writeHead(500, 'Content-Type: text/html');
+        response.writeHead(500, { 'Content-Type': 'text/html' });
         response.end("<h1>Sorry, we've had a problem on our end</h1>");
       } else {
-        response.writeHead(200, 'Content-Type: image/x-icon');
+        response.writeHead(200, { 'Content-Type': 'image/x-icon' });
         response.end(file);
       }
     });
@@ -203,10 +203,10 @@ const extensionType = {
         fs.readFile(filePath, (error, file) => {
           if (error) {
           console.log(error);
-          response.writeHead(404, 'Content-Type: text/html');
+          response.writeHead(404, { 'Content-Type': 'text/html' });
           response.end('<h1>404 file not found</h1>');
           } else {
-          response.writeHead(200, `Content-Type: ${extensionType[extension]}`);
+          response.writeHead(200, { 'Content-Type': extensionType[extension] });
           response.end(file);
           }
         });
@@ -227,10 +227,10 @@ const handleHomeRoute = (request, response) => {
   fs.readFile(filePath, (error, file) => {
     if (error) {
       console.log(error);
-      response.writeHead(500, 'Content-Type: text/html');
+      response.writeHead(500, { 'Content-Type': 'text/html' });
       response.end("<h1>Sorry, we've had a problem on our end</h1>");
     } else {
-      response.writeHead(200, 'Content-Type: text/html');
+      response.writeHead(200, { 'Content-Type': 'text/html' });
       response.end(file);
     }
   });
@@ -255,10 +255,10 @@ const handlePublic = (request, response, url) => {
   fs.readFile(filePath, (error, file) => {
     if (error) {
       console.log(error);
-      response.writeHead(404, 'Content-Type: text/html');
+      response.writeHead(404, { 'Content-Type': 'text/html' });
       response.end('<h1>404 file not found</h1>');
     } else {
-      response.writeHead(200, `Content-Type: ${extensionType[extension]}`);
+      response.writeHead(200, { 'Content-Type': extensionType[extension] });
       response.end(file);
     }
   });
@@ -291,7 +291,7 @@ const router = (request, response) => {
   } else if (url.indexOf('public') !== -1) {
     handlers.handlePublic(request, response, url);
   } else {
-    response.writeHead(404, 'Content-Type: text/html');
+    response.writeHead(404, { 'Content-Type': 'text/html' });
     response.end('<h1>404 file not found</h1>');
   }
 };
