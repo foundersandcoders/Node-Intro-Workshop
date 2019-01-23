@@ -7,7 +7,7 @@ const router = (request, response) => {
     const html = fs.readFileSync(
       path.join(__dirname, '..', 'public', 'index.html')
     );
-    response.writeHead(200, 'Content-Type: text/html');
+    response.writeHead(200, { 'Content-Type': 'text/html' });
     response.end(html);
   } else if (url === '/yolo') {
     response.end('this is yolo');
